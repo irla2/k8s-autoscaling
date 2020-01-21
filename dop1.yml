@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ramu
+  #namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: Gps
+      department: Test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: Gps
+        department: Test
+    spec:
+      containers:
+      - name: ramu
+        image: nginx:latest
+        env:
+        - name: "PORT"
+          value: "80"
+        resources:
+          limits:
+            memory: "256Mi"
+          requests:
+            memory: "32Mi"
+     
+    
+    
+       
+

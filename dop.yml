@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  #namespace: monitoring 
+spec:
+  selector:
+    matchLabels:
+      app: metrics
+      department: engineering
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: metrics
+        department: engineering
+    spec:
+      containers:
+      - name: hello
+        image: "nginx"
+        env:
+        - name: "PORT"
+          value: "80"
+        resources:
+          limits:
+            cpu: "10m"
+            memory: "64Mi"
+          requests:
+            cpu: "5m"
+            memory: "32Mi"
+          
+            
